@@ -18,7 +18,7 @@ This project intentionally keeps a narrow scope: no web UI, no FTP server, no MQ
 3. The firmware searches for GIFs matching the ROM basename:
 
    ```text
-   /gif/fbneo/dkong.gif
+   /gif/fbneo/dkong_1.gif
    /gif/fbneo/dkong_2.gif
    /gif/fbneo/dkong_3.gif
    ```
@@ -35,7 +35,7 @@ This project intentionally keeps a narrow scope: no web UI, no FTP server, no MQ
 /gif/
   default.gif
   fbneo/
-    dkong.gif
+    dkong_1.gif
     dkong_2.gif
     dkong_3.gif
     sfiii3.gif
@@ -45,7 +45,7 @@ This project intentionally keeps a narrow scope: no web UI, no FTP server, no MQ
 
 ## `/config.txt`
 
-Copy [firmware/sd_config_example.txt](firmware/sd_config_example.txt) to `/config.txt` at the SD card root and edit it:
+Copy [firmware/config.txt](firmware/config.txt) to `/config.txt` at the SD card root and edit it:
 
 ```ini
 SSID=YourWifiName
@@ -201,7 +201,7 @@ arduino-cli compile --fqbn esp32:esp32:esp32 firmware/ArcadeLedMarquee
 Current validation build:
 
 ```text
-Flash: 1,034,406 bytes / 78%
+Flash: 1,034,390 bytes / 78%
 RAM:   73,004 bytes / 22%
 ```
 

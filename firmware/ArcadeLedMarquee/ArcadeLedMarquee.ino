@@ -242,8 +242,6 @@ int parseVariantOrder(String fileStem, String gameStem) {
   fileStem.toLowerCase();
   gameStem.toLowerCase();
 
-  if (fileStem == gameStem) return 1;
-
   String prefix = gameStem + "_";
   if (!fileStem.startsWith(prefix)) return -1;
 
@@ -255,7 +253,7 @@ int parseVariantOrder(String fileStem, String gameStem) {
   }
 
   int order = suffix.toInt();
-  return order > 1 ? order : -1;
+  return order >= 1 ? order : -1;
 }
 
 String urlDecode(String value) {

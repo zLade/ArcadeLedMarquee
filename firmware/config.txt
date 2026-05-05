@@ -20,20 +20,20 @@ DHCP=true
 BRIGHTNESS=40
 
 # Standard 128x32 matrix, two 64x32 panels:
-# PANEL_CHAIN=2
-# DISPLAY_X_OFFSET=0
-# VIEWPORT_WIDTH=128
+PANEL_CHAIN=2
+DISPLAY_X_OFFSET=0
+VIEWPORT_WIDTH=128
 
 # 256x32 DMD-style setup with GIFs on the right 128 pixels:
-PANEL_CHAIN=4
-DISPLAY_X_OFFSET=128
-VIEWPORT_WIDTH=128
+# PANEL_CHAIN=4
+# DISPLAY_X_OFFSET=128
+# VIEWPORT_WIDTH=128
 
 # GIF storage.
 GIF_ROOT=/gif
 DEFAULT_GIF=/gif/default.gif
 
-# Rotate dkong.gif, dkong_2.gif, dkong_3.gif every 10 seconds.
+# Rotate game_1.gif, game_2.gif, game_3.gif every 10 seconds.
 GIF_INTERVAL_SECONDS=10
 
 # Scrolling title displayed between multiple GIFs, and as fallback when no GIF exists.
