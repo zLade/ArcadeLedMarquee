@@ -81,14 +81,6 @@ DISPLAY_X_OFFSET=0
 VIEWPORT_WIDTH=128
 ```
 
-For a 256x32 DMD-style setup where the GIF area is the right 128 pixels:
-
-```ini
-PANEL_CHAIN=4
-DISPLAY_X_OFFSET=128
-VIEWPORT_WIDTH=128
-```
-
 ## Recalbox Installation
 
 Copy the Recalbox script to the `userscripts` folder.
