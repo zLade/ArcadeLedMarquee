@@ -1,0 +1,6 @@
+firmware/build*/
+*.elf
+*.map
+*.bin
+*.tgz
+*.log
