@@ -11,3 +11,4 @@
 * Game GIF variant rotation, for example `dkong_1.gif`, `dkong_2.gif`, and `dkong_3.gif`.
 * Scrolling title fallback when no game GIF exists.
 * Recalbox EmulationStation userscript.
+* Generic SD card template in `sdcard_template/`.

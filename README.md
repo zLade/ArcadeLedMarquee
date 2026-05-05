@@ -30,6 +30,8 @@ This project intentionally keeps a narrow scope: no web UI, no FTP server, no MQ
 
 ## SD Card Layout
 
+The ready-to-copy SD card template is available in [sdcard_template](sdcard_template). It contains generic configuration values and placeholder folders only; add your own `default.gif` and game GIF files before booting the ESP32.
+
 ```text
 /config.txt
 /gif/
@@ -38,14 +40,14 @@ This project intentionally keeps a narrow scope: no web UI, no FTP server, no MQ
     dkong_1.gif
     dkong_2.gif
     dkong_3.gif
-    sfiii3.gif
+    sfiii3_1.gif
   snes/
-    zelda3.gif
+    zelda3_1.gif
 ```
 
 ## `/config.txt`
 
-Copy [firmware/config.txt](firmware/config.txt) to `/config.txt` at the SD card root and edit it:
+Copy [sdcard_template/config.txt](sdcard_template/config.txt) to `/config.txt` at the SD card root and edit it:
 
 ```ini
 SSID=YourWifiName
@@ -54,10 +56,9 @@ HOSTNAME=arcade-led-marquee
 
 DHCP=true
 # DHCP=false
-# IP=192.168.1.108
+# IP=192.168.1.50
 # GATEWAY=192.168.1.1
 # SUBNET=255.255.255.0
-# DNS=192.168.1.1
 
 BRIGHTNESS=40
 PANEL_CHAIN=4
@@ -131,7 +132,7 @@ This file lets you change the ESP32 IP address or curl timeout without editing t
 Example content:
 
 ```sh
-IP_ESP32="192.168.1.108"
+IP_ESP32="192.168.1.50"
 CURL_TIMEOUT="8"
 ```
 
@@ -181,7 +182,7 @@ http://ESP32_IP/gif?s=fbneo&g=dkong&t=Donkey%20Kong
 Useful test from a PC:
 
 ```powershell
-curl "http://192.168.1.108/gif?s=fbneo&g=dkong&t=Donkey%20Kong"
+curl "http://192.168.1.50/gif?s=fbneo&g=dkong&t=Donkey%20Kong"
 ```
 
 Status endpoint:

@@ -1,4 +1,4 @@
-# Copy this file to /config.txt at the root of the ESP32 SD card.
+# ArcadeLedMarquee SD configuration template
 
 # WiFi
 SSID=YourWifiName
