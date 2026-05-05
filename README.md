@@ -90,26 +90,91 @@ VIEWPORT_WIDTH=128
 
 ## Recalbox Installation
 
-Copy the script to Recalbox:
+Copy the Recalbox script to the `userscripts` folder.
+
+Recommended filename:
 
 ```text
 /recalbox/share/userscripts/arcade_led_marquee[rungame,rundemo,endgame,enddemo,systembrowsing,start,stop,shutdown,reboot,quit,relaunch,sleep,wakeup].sh
 ```
 
-Optional Recalbox-side config:
+The filename is long because Recalbox supports event filtering directly in the script name:
+
+```text
+script_name[event1,event2,event3].sh
+```
+
+With this syntax, EmulationStation only calls the script for the listed events. That avoids running the script for every browsing movement or unrelated event.
+
+You can use a shorter script name if preferred, as long as the event list remains in brackets. Example:
+
+```text
+/recalbox/share/userscripts/alm[rungame,endgame,start,stop,shutdown,reboot,sleep,wakeup].sh
+```
+
+The default script listens to these events:
+
+* `rungame`, `rundemo`: send the current game to the ESP32.
+* `endgame`, `enddemo`, `systembrowsing`, `start`, `sleep`, `relaunch`, `wakeup`: return to the default GIF when no game is active.
+* `stop`, `shutdown`, `reboot`, `quit`: also return to the default GIF before Recalbox stops.
+
+### Optional Recalbox Config
+
+The script can read an optional Recalbox-side config file:
 
 ```text
 /recalbox/share/system/configs/arcade_led_marquee.conf
 ```
 
-Example:
+This file lets you change the ESP32 IP address or curl timeout without editing the script itself.
+
+Example content:
 
 ```sh
 IP_ESP32="192.168.1.108"
 CURL_TIMEOUT="8"
 ```
 
-The script follows the official Recalbox EmulationStation userscript contract by parsing `-action`, `-statefile`, and `-param`, while keeping `/tmp/es_state.inf` as fallback.
+If this file does not exist, the script uses the default values embedded in the script.
+
+### Recalbox Event State File
+
+The script follows the official Recalbox EmulationStation userscript contract by parsing:
+
+* `-action`: the event name, for example `rungame`.
+* `-statefile`: path to the EmulationStation state file.
+* `-param`: event parameter, usually the launched ROM path for `rungame`.
+
+Recalbox commonly writes the current EmulationStation context to:
+
+```text
+/tmp/es_state.inf
+```
+
+The script uses the `-statefile` argument when Recalbox provides it. `/tmp/es_state.inf` is kept only as a fallback for manual tests or older setups.
+
+Example state file content:
+
+```ini
+Action=rungame
+Game=Donkey Kong
+GamePath=/recalbox/share/roms/fbneo/dkong.zip
+SystemId=fbneo
+System=FinalBurn Neo
+State=playing
+```
+
+From this data, the script extracts:
+
+* `SystemId` or the ROM folder as the system, for example `fbneo`.
+* the ROM basename as the game id, for example `dkong`.
+* `Game` as the readable title, for example `Donkey Kong`.
+
+It then sends:
+
+```text
+http://ESP32_IP/gif?s=fbneo&g=dkong&t=Donkey%20Kong
+```
 
 ## HTTP Input
 
