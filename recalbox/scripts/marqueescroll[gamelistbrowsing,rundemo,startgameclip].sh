@@ -17,7 +17,7 @@ done
 
 # Workaround bug filtre Recalbox: on filtre côté script aussi
 case "$ACTION" in
-  gamelistbrowsing) ;;
+  gamelistbrowsing|rundemo|startgameclip) ;;
   *) exit 0 ;;
 esac
 
